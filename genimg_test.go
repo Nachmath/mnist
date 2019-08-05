@@ -5,36 +5,38 @@ package mnist
 
 import (
 	"fmt"
-	"os"
 	"testing"
 )
 
-func Test_GenImages(t *testing.T) {
+const TrainSetSampleFileName = "usable/train-images.idx3-ubyte"
+const TrainSetLabelFileName = "usable/train-labels.idx1-ubyte"
 
-}
-
-const TrainSetFileName = "usable/train-images.idx3-ubyte"
-
-func Test_OpenFile(t *testing.T) {
-	file, err := os.Open(TrainSetFileName)
+func Test(t *testing.T) {
+	var mnistSamplePump SamplePump
+	err := mnistSamplePump.Open(TrainSetSampleFileName)
 	if err != nil {
+		fmt.Println(err)
+		return
 	}
-	defer file.Close()
+	defer mnistSamplePump.Close()
 
-	magicNumber := make([]byte, 4)
-	// reader := bufio.NewReader(file)
-	n, err := file.Read(magicNumber)
+	oneSample := mnistSamplePump.One(0)
+	fmt.Println(len(oneSample))
+
+	// someSamples := mnistSamplePump.Some(59998, 60000)
+	// fmt.Println(someSamples)
+
+	var mnistLabelPump LabelPump
+	err = mnistLabelPump.Open(TrainSetLabelFileName)
 	if err != nil {
+		fmt.Println(err)
+		return
 	}
-	fmt.Println(n)
-	fmt.Println(magicNumber)
+	defer mnistLabelPump.Close()
 
-	numberOfImages := make([]byte, 4)
-	n, err = file.Read(numberOfImages)
-	if err == nil {
-	}
-	fmt.Println(n)
-	fmt.Println(numberOfImages)
-	var numberOfImagesI int32 = binary.
+	oneLabel := mnistLabelPump.One(0)
+	fmt.Println(oneLabel)
 
+	someLabels := mnistLabelPump.Some(59998, 60000)
+	fmt.Println(someLabels)
 }
