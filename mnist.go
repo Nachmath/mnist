@@ -104,7 +104,11 @@ func PrintExample(e Example) {
 	fmt.Println("Index:", e.index)
 	fmt.Println("Label:", e.label)
 	for i, v := range e.sample {
-		fmt.Printf("%2x", v)
+		if v == 0 {
+			fmt.Printf("%2x", v)
+		} else {
+			fmt.Printf("%02x", v)
+		}
 		if i%W == W-1 {
 			fmt.Printf("\n")
 		}

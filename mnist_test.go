@@ -56,7 +56,7 @@ func Test_GenImage(t *testing.T) {
 	}
 	defer ep.Close()
 
-	example := ep.One(55)
+	example := ep.One(5555)
 	// fmt.Println(example)
 
 	if !(GenExampleImage(example) == true) {
@@ -64,8 +64,8 @@ func Test_GenImage(t *testing.T) {
 	}
 	PrintExample(example)
 
-	for i := 1500; i < 1600; i++ {
-		GenExampleImage(ep.One(i))
-	}
+	// for i := 1500; i < 1600; i++ {
+	// 	GenExampleImage(ep.One(i))
+	// }
 
 }
