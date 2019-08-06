@@ -14,8 +14,10 @@ import (
 
 // Data file name
 const (
-	TrainSetSampleFileName = "usable/train-images.idx3-ubyte"
-	TrainSetLabelFileName  = "usable/train-labels.idx1-ubyte"
+	TrainingSetSampleFile = "usable/train-images.idx3-ubyte"
+	TrainingSetLabelFile  = "usable/train-labels.idx1-ubyte"
+	TestSetSampleFile     = "usable/t10k-images.idx3-ubyte"
+	TestSetLabelFile      = "usable/t10k-labels.idx1-ubyte"
 )
 
 // Image size

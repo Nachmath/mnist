@@ -10,7 +10,7 @@ import (
 
 func Test_SamplePump_LabelPump(t *testing.T) {
 	var sp SamplePump
-	err := sp.Open(TrainSetSampleFileName)
+	err := sp.Open(TrainingSetSampleFile)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -18,7 +18,7 @@ func Test_SamplePump_LabelPump(t *testing.T) {
 	defer sp.Close()
 
 	var lp LabelPump
-	err = lp.Open(TrainSetLabelFileName)
+	err = lp.Open(TrainingSetLabelFile)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -38,7 +38,7 @@ func Test_SamplePump_LabelPump(t *testing.T) {
 
 func Test_ExamplePump(t *testing.T) {
 	var ep ExamplePump
-	err := ep.Open(TrainSetSampleFileName, TrainSetLabelFileName)
+	err := ep.Open(TrainingSetSampleFile, TrainingSetLabelFile)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -50,7 +50,8 @@ func Test_ExamplePump(t *testing.T) {
 
 func Test_GenImage(t *testing.T) {
 	var ep ExamplePump
-	err := ep.Open(TrainSetSampleFileName, TrainSetLabelFileName)
+	// err := ep.Open(TrainingSetSampleFile, TrainingSetLabelFile)
+	err := ep.Open(TestSetSampleFile, TestSetLabelFile)
 	if err != nil {
 		t.Fatal(err)
 	}
