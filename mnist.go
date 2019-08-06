@@ -78,7 +78,7 @@ func GenExampleImage(e Example) bool {
 	}
 	filename := "example_images/" +
 		strconv.Itoa(e.index) + "_" +
-		strconv.Itoa(int(e.label)) + ".jpg"
+		strconv.Itoa(int(e.label)) + ".png"
 	file, err := os.Create(filename)
 	if err != nil {
 		return false
