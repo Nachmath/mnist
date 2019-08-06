@@ -1,30 +1,30 @@
 // Copyright (c) 2019 邢子文(XING-ZIWEN) <Rick.Xing@Nachmath.com>
-// STAMP|42705
+// STAMP|42705|42706
 
 package mnist
 
 import (
 	"os"
 
-	"github.com/nachmath/godatx/pumper"
+	"github.com/nachmath/godatx/datapump"
 )
 
 var (
 	_p  *SamplePump
-	_   pumper.BinPumper = _p
+	_   datapump.BinPumper = _p
 	_p2 *LabelPump
-	_   pumper.BinPumper = _p2
+	_   datapump.BinPumper = _p2
 )
 
 // Size
 const (
 	SampleFileHeaderSize = 16
 	LabelFileHeaderSize  = 8
-	SampleSize           = 28 * 28
+	SampleSize           = W * H
 	LabelSize            = 1
 )
 
-//**//**//**//**//**//**//**//**//**//**//**//**//
+//---/---/---/---/---/---/---/---/---/---/---/---//
 
 // SamplePump ...
 type SamplePump struct {
@@ -90,7 +90,7 @@ func (p *SamplePump) Some(begin, end int) [][]byte {
 	return somebytes[:count]
 }
 
-//**//**//**//**//**//**//**//**//**//**//**//**//
+//---/---/---/---/---/---/---/---/---/---/---/---//
 
 // LabelPump ...
 type LabelPump struct {
