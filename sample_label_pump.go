@@ -1,19 +1,25 @@
 // Copyright (c) 2019 邢子文(XING-ZIWEN) <Rick.Xing@Nachmath.com>
-// STAMP|42705|42706
+// STAMP|42705|42812
 
 package mnist
 
 import (
 	"os"
-
-	"github.com/nachmath/godatx/datapump"
 )
+
+// BinPumper 用于二进制文件处理.
+type BinPumper interface {
+	Open(string) error
+	Close()
+	One(i int) []byte
+	Some(begin, end int) [][]byte
+}
 
 var (
 	_p  *SamplePump
-	_   datapump.BinPumper = _p
+	_   BinPumper = _p
 	_p2 *LabelPump
-	_   datapump.BinPumper = _p2
+	_   BinPumper = _p2
 )
 
 // Size
